@@ -1,62 +1,214 @@
 /**index.wxss**/
 page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
-  width: 80%;
-}
-
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-
-.avatar-wrapper {
+.container {
   padding: 0;
-  width: 56px !important;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.avatar {
-  display: block;
-  width: 56px;
-  height: 56px;
-}
-
-.nickname-wrapper {
+  min-height: 100vh;
   display: flex;
-  width: 100%;
-  padding: 16px;
-  box-sizing: border-box;
-  border-top: .5px solid rgba(0, 0, 0, 0.1);
-  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
-  color: black;
+  flex-direction: column;
 }
 
-.nickname-label {
-  width: 105px;
+/* 顶部标题区域 */
+.header {
+  padding: 80rpx 40rpx 60rpx;
+  text-align: center;
+  color: white;
 }
 
-.nickname-input {
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* 搜索区域 */
+.search-section {
+  padding: 0 40rpx 60rpx;
+}
+
+.search-box {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.search-input-wrapper {
   flex: 1;
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  padding: 20rpx;
+}
+
+.search-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+  opacity: 0.6;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+  background: transparent;
+  border: none;
+}
+
+.placeholder-style {
+  color: #999;
+}
+
+.search-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.4);
+}
+
+.search-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.4);
+}
+
+/* 快捷服务区域 */
+.quick-services {
+  padding: 0 40rpx 60rpx;
+}
+
+.service-title {
+  color: white;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 40rpx;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30rpx;
+}
+
+.service-item {
+  background: rgba(255,255,255,0.95);
+  border-radius: 16rpx;
+  padding: 40rpx 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.service-item:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.15);
+}
+
+.service-icon {
+  width: 64rpx;
+  height: 64rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.8;
+}
+
+.service-text {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 底部信息 */
+.footer {
+  margin-top: auto;
+  padding: 40rpx;
+  text-align: center;
+}
+
+.footer-text {
+  color: rgba(255,255,255,0.8);
+  font-size: 24rpx;
+  font-weight: 300;
+}
+
+/* 语音对话入口 */
+.voice-chat-section {
+  padding: 0 40rpx 40rpx;
+}
+
+.voice-chat-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 32rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.voice-chat-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.4);
+}
+
+.voice-chat-content {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.voice-chat-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 30rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-chat-icon image {
+  width: 48rpx;
+  height: 48rpx;
+  filter: brightness(0) invert(1);
+}
+
+.voice-chat-info {
+  flex: 1;
+}
+
+.voice-chat-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.voice-chat-desc {
+  font-size: 24rpx;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.voice-chat-arrow {
+  font-size: 36rpx;
+  font-weight: bold;
+  opacity: 0.8;
 }

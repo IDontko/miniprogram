@@ -1,0 +1,93 @@
+<!--voice-chat.wxml-->
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <view class="title">语音法律咨询</view>
+    <view class="subtitle">说出您的法律问题，AI律师为您解答</view>
+  </view>
+
+  <!-- 对话记录区域 -->
+  <scroll-view class="chat-container" scroll-y scroll-into-view="{{scrollToView}}" scroll-with-animation>
+    <view class="chat-list">
+      <!-- 欢迎消息 -->
+      <view class="message system-message">
+        <view class="message-content">
+          <text>您好！我是您的AI法律顾问，请说出您的法律问题，我会为您提供专业的法律建议。</text>
+        </view>
+        <view class="message-time">{{currentTime}}</view>
+      </view>
+
+      <!-- 对话消息列表 -->
+      <view wx:for="{{chatMessages}}" wx:key="id" class="message {{item.type}}-message" id="msg-{{item.id}}">
+        <view class="message-avatar">
+          <image src="{{item.avatar}}" mode="aspectFill"></image>
+        </view>
+        <view class="message-content">
+          <view class="message-text">{{item.content}}</view>
+          <view class="message-time">{{item.time}}</view>
+        </view>
+      </view>
+
+      <!-- 正在输入提示 -->
+      <view wx:if="{{isTyping}}" class="message ai-message typing">
+        <view class="message-avatar">
+          <image src="/images/ai-avatar.png" mode="aspectFill"></image>
+        </view>
+        <view class="message-content">
+          <view class="typing-indicator">
+            <view class="typing-dot"></view>
+            <view class="typing-dot"></view>
+            <view class="typing-dot"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部语音控制区域 -->
+  <view class="voice-control">
+    <!-- 语音输入按钮 -->
+    <view class="voice-btn-wrapper">
+      <button 
+        class="voice-btn {{isRecording ? 'recording' : ''}}" 
+        bindtouchstart="startRecording"
+        bindtouchend="stopRecording"
+        bindtouchcancel="cancelRecording"
+        disabled="{{isProcessing}}"
+      >
+        <view class="voice-btn-inner">
+          <image class="voice-icon" src="/images/mic-icon.png" mode="aspectFit"></image>
+          <text class="voice-text">{{isRecording ? '松开结束' : '按住说话'}}</text>
+        </view>
+      </button>
+    </view>
+
+    <!-- 录音状态指示器 -->
+    <view wx:if="{{isRecording}}" class="recording-indicator">
+      <view class="recording-wave">
+        <view class="wave-bar" wx:for="{{[1,2,3,4,5]}}" wx:key="*this"></view>
+      </view>
+      <text class="recording-text">正在录音...</text>
+    </view>
+
+    <!-- 功能按钮区域 -->
+    <view class="function-buttons">
+      <button class="function-btn" bindtap="clearChat">
+        <image src="/images/clear-icon.png" mode="aspectFit"></image>
+        <text>清空对话</text>
+      </button>
+      <button class="function-btn" bindtap="showHistory">
+        <image src="/images/history-icon.png" mode="aspectFit"></image>
+        <text>对话历史</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 录音权限提示 -->
+  <view wx:if="{{showPermissionTip}}" class="permission-tip">
+    <view class="tip-content">
+      <text>需要录音权限才能使用语音功能</text>
+      <button class="permission-btn" bindtap="requestPermission">授权录音</button>
+    </view>
+  </view>
+</view> 

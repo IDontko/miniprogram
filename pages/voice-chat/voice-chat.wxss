@@ -1,0 +1,333 @@
+/* voice-chat.wxss */
+page {
+  background: #f5f7fa;
+  height: 100vh;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部标题 */
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60rpx 40rpx 40rpx;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* 对话容器 */
+.chat-container {
+  flex: 1;
+  padding: 20rpx;
+  background: #f5f7fa;
+}
+
+.chat-list {
+  padding-bottom: 20rpx;
+}
+
+/* 消息样式 */
+.message {
+  display: flex;
+  margin-bottom: 30rpx;
+  animation: fadeInUp 0.3s ease;
+}
+
+.message-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.message-avatar image {
+  width: 100%;
+  height: 100%;
+}
+
+.message-content {
+  flex: 1;
+  max-width: 70%;
+}
+
+.message-text {
+  background: white;
+  padding: 24rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #333;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+  word-wrap: break-word;
+}
+
+.message-time {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 12rpx;
+  text-align: right;
+}
+
+/* 用户消息 */
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.user-message .message-avatar {
+  margin-right: 0;
+  margin-left: 20rpx;
+}
+
+.user-message .message-content {
+  text-align: right;
+}
+
+.user-message .message-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.user-message .message-time {
+  text-align: left;
+}
+
+/* AI消息 */
+.ai-message .message-text {
+  background: white;
+  border-left: 4rpx solid #667eea;
+}
+
+/* 系统消息 */
+.system-message {
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.system-message .message-content {
+  max-width: 80%;
+  text-align: center;
+}
+
+.system-message .message-text {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border: 1rpx solid rgba(102, 126, 234, 0.2);
+}
+
+/* 正在输入提示 */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 24rpx;
+}
+
+.typing-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #ccc;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+/* 底部语音控制 */
+.voice-control {
+  background: white;
+  padding: 30rpx 40rpx;
+  border-top: 1rpx solid #eee;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.voice-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+
+.voice-btn {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 32rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.voice-btn.recording {
+  transform: scale(1.1);
+  box-shadow: 0 12rpx 40rpx rgba(102, 126, 234, 0.5);
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+.voice-btn-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.voice-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 16rpx;
+  filter: brightness(0) invert(1);
+}
+
+.voice-text {
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+/* 录音状态指示器 */
+.recording-indicator {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.recording-wave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.wave-bar {
+  width: 8rpx;
+  height: 40rpx;
+  background: #667eea;
+  border-radius: 4rpx;
+  animation: wave 1s infinite ease-in-out;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0s; }
+.wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+.recording-text {
+  font-size: 24rpx;
+  color: #667eea;
+  font-weight: 500;
+}
+
+/* 功能按钮 */
+.function-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.function-btn {
+  background: transparent;
+  border: 1rpx solid #ddd;
+  border-radius: 12rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  color: #666;
+  font-size: 24rpx;
+}
+
+.function-btn image {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.7;
+}
+
+/* 权限提示 */
+.permission-tip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.tip-content {
+  background: white;
+  padding: 60rpx 40rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  max-width: 80%;
+}
+
+.tip-content text {
+  display: block;
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.permission-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+}
+
+/* 动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    height: 20rpx;
+  }
+  50% {
+    height: 60rpx;
+  }
+} 

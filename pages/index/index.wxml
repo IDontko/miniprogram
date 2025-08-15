@@ -1,27 +1,71 @@
 <!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
-    </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
+<view class="container">
+  <!-- 顶部标题区域 -->
+  <view class="header">
+    <view class="title">您私人的法律顾问</view>
+    <view class="subtitle">专业法律咨询，为您保驾护航</view>
+  </view>
+
+  <!-- 搜索区域 -->
+  <view class="search-section">
+    <view class="search-box">
+      <view class="search-input-wrapper">
+        <image class="search-icon" src="/images/search-icon.png" mode="aspectFit"></image>
+        <input 
+          class="search-input" 
+          placeholder="请输入您的法律问题..." 
+          placeholder-class="placeholder-style"
+          bindinput="onSearchInput"
+          value="{{searchText}}"
+        />
+      </view>
+      <button class="search-btn" bindtap="onSearch">搜索</button>
     </view>
   </view>
-</scroll-view>
+
+  <!-- 快捷服务区域 -->
+  <view class="quick-services">
+    <view class="service-title">常见法律问题</view>
+    <view class="service-grid">
+      <view class="service-item" bindtap="onServiceTap" data-type="marriage">
+        <image class="service-icon" src="/images/marriage-icon.png" mode="aspectFit"></image>
+        <text class="service-text">婚姻家事</text>
+      </view>
+      <view class="service-item" bindtap="onServiceTap" data-type="contract">
+        <image class="service-icon" src="/images/contract-icon.png" mode="aspectFit"></image>
+        <text class="service-text">合同纠纷</text>
+      </view>
+      <view class="service-item" bindtap="onServiceTap" data-type="labor">
+        <image class="service-icon" src="/images/labor-icon.png" mode="aspectFit"></image>
+        <text class="service-text">劳动纠纷</text>
+      </view>
+      <view class="service-item" bindtap="onServiceTap" data-type="property">
+        <image class="service-icon" src="/images/property-icon.png" mode="aspectFit"></image>
+        <text class="service-text">房产纠纷</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 语音对话入口 -->
+  <view class="voice-chat-section">
+    <view class="voice-chat-card" bindtap="goToVoiceChat">
+      <view class="voice-chat-content">
+        <view class="voice-chat-icon">
+          <image src="/images/voice-chat-icon.png" mode="aspectFit"></image>
+        </view>
+        <view class="voice-chat-info">
+          <view class="voice-chat-title">语音法律咨询</view>
+          <view class="voice-chat-desc">说出您的法律问题，AI律师为您解答</view>
+        </view>
+        <view class="voice-chat-arrow">
+          <text>></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="footer">
+    <text class="footer-text">专业律师团队 · 24小时在线咨询</text>
+  </view>
+</view>
